@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 import { navLinks } from "../../data/navigation";
 import { Button } from "./Button";
-import { ShoppingBag, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import owncartLogo from "../../assets/owncart-logo.png";
 import { cn } from "../../utils/cn";
 
 export const Navbar: React.FC = () => {
@@ -12,31 +14,40 @@ export const Navbar: React.FC = () => {
       <div className="max-w-[1180px] mx-auto px-7">
         <div className="flex items-center justify-between h-[68px]">
           {/* Brand Logo */}
-          <a href="#top" className="flex items-center gap-2 group">
-            <div className="w-[36px] h-[36px] rounded-[10px] bg-brand-gradient text-white flex items-center justify-center font-bold text-lg shadow-sm group-hover:scale-105 transition-transform">
-              <ShoppingBag className="w-5 h-5 stroke-[2.5]" />
-            </div>
-            <span className="font-serif text-[22px] font-semibold text-owncart-heading tracking-tight">
-              Owncart
-            </span>
-          </a>
+          <Link to="/" className="flex items-center group py-1">
+            <img
+              src={owncartLogo}
+              alt="OwnCart"
+              className="h-9 sm:h-10 md:h-11 w-auto object-contain mix-blend-multiply transition-transform duration-200 group-hover:scale-105 select-none"
+              style={{
+                mixBlendMode: "multiply",
+              }}
+            />
+          </Link>
 
           {/* Desktop Navigation Links */}
           <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <a
+              <NavLink
                 key={link.href}
-                href={link.href}
-                className="font-sans font-semibold text-[15px] text-owncart-text hover:text-owncart-heading transition-colors"
+                to={link.href}
+                className={({ isActive }) =>
+                  cn(
+                    "font-sans font-semibold text-[15px] transition-colors",
+                    isActive
+                      ? "text-owncart-primary"
+                      : "text-owncart-text hover:text-owncart-heading"
+                  )
+                }
               >
                 {link.label}
-              </a>
+              </NavLink>
             ))}
           </nav>
 
           {/* Desktop CTA Action */}
           <div className="hidden md:flex items-center gap-2.5">
-            <Button href="#start" variant="primary" size="md">
+            <Button href="/pricing" variant="primary" size="md">
               Launch Your Store
             </Button>
           </div>
@@ -63,18 +74,25 @@ export const Navbar: React.FC = () => {
       >
         <div className="flex flex-col gap-3">
           {navLinks.map((link) => (
-            <a
+            <NavLink
               key={link.href}
-              href={link.href}
+              to={link.href}
               onClick={() => setMobileMenuOpen(false)}
-              className="font-sans font-semibold text-base text-owncart-text hover:text-owncart-heading py-2 border-b border-owncart-border/60"
+              className={({ isActive }) =>
+                cn(
+                  "font-sans font-semibold text-base py-2 border-b border-owncart-border/60 transition-colors",
+                  isActive
+                    ? "text-owncart-primary"
+                    : "text-owncart-text hover:text-owncart-heading"
+                )
+              }
             >
               {link.label}
-            </a>
+            </NavLink>
           ))}
           <div className="pt-3">
             <Button
-              href="#start"
+              href="/pricing"
               variant="primary"
               block
               onClick={() => setMobileMenuOpen(false)}

@@ -1,4 +1,5 @@
 import React, { type ButtonHTMLAttributes } from "react";
+import { Link } from "react-router-dom";
 import { cn } from "../../utils/cn";
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -50,6 +51,14 @@ export const Button: React.FC<ButtonProps> = ({
   );
 
   if (href) {
+    if (href.startsWith("/") && !href.startsWith("//")) {
+      return (
+        <Link to={href} className={combinedClassName}>
+          {icon && <span className="shrink-0">{icon}</span>}
+          {children}
+        </Link>
+      );
+    }
     return (
       <a href={href} className={combinedClassName}>
         {icon && <span className="shrink-0">{icon}</span>}

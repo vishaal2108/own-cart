@@ -1,6 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { footerColumns } from "../../data/navigation";
-import { ShoppingBag, Heart, MessageCircle, ArrowUpRight } from "lucide-react";
+import { Heart, MessageCircle, ArrowUpRight } from "lucide-react";
+import owncartLogo from "../../assets/owncart-logo.png";
 
 export const Footer: React.FC = () => {
   return (
@@ -9,14 +11,17 @@ export const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-[rgba(255,255,255,0.08)]">
           {/* Brand Info */}
           <div className="lg:col-span-2 flex flex-col gap-4">
-            <a href="#top" className="flex items-center gap-2 w-fit group">
-              <div className="w-[36px] h-[36px] rounded-[10px] bg-brand-gradient text-white flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform">
-                <ShoppingBag className="w-5 h-5 stroke-[2.5]" />
-              </div>
-              <span className="font-serif text-[22px] font-semibold tracking-tight text-white group-hover:text-owncart-primary transition-colors">
-                Owncart
-              </span>
-            </a>
+            <Link to="/" className="flex items-center w-fit group py-1">
+              <img
+                src={owncartLogo}
+                alt="OwnCart"
+                className="h-9 sm:h-10 md:h-11 w-auto object-contain transition-transform duration-200 group-hover:scale-105 select-none"
+                style={{
+                  filter: "brightness(0) invert(1)",
+                  mixBlendMode: "screen",
+                }}
+              />
+            </Link>
             <p className="text-sm text-[#BFC4CF] leading-relaxed max-w-xs">
               The easiest way to open a real online store — built for sellers in Tamil Nadu and beyond. Turn your catalog into a production-level storefront in minutes.
             </p>
@@ -62,13 +67,23 @@ export const Footer: React.FC = () => {
               <ul className="flex flex-col gap-2">
                 {col.links.map((link) => (
                   <li key={link.label}>
-                    <a
-                      href={link.href}
-                      className="text-[14px] text-[#BFC4CF] hover:text-owncart-primary inline-flex items-center gap-1 transition-colors group py-1"
-                    >
-                      <span>{link.label}</span>
-                      <ArrowUpRight className="w-3.5 h-3.5 opacity-0 -translate-y-0.5 translate-x-0.5 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all" />
-                    </a>
+                    {link.href.startsWith("/") ? (
+                      <Link
+                        to={link.href}
+                        className="text-[14px] text-[#BFC4CF] hover:text-owncart-primary inline-flex items-center gap-1 transition-colors group py-1"
+                      >
+                        <span>{link.label}</span>
+                        <ArrowUpRight className="w-3.5 h-3.5 opacity-0 -translate-y-0.5 translate-x-0.5 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all" />
+                      </Link>
+                    ) : (
+                      <a
+                        href={link.href}
+                        className="text-[14px] text-[#BFC4CF] hover:text-owncart-primary inline-flex items-center gap-1 transition-colors group py-1"
+                      >
+                        <span>{link.label}</span>
+                        <ArrowUpRight className="w-3.5 h-3.5 opacity-0 -translate-y-0.5 translate-x-0.5 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all" />
+                      </a>
+                    )}
                   </li>
                 ))}
               </ul>
