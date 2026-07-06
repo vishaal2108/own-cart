@@ -18,13 +18,13 @@ export const Badge: React.FC<BadgeProps> = ({
 
   const variants = {
     eyebrow:
-      "text-[13px] uppercase tracking-[0.14em] text-owncart-clay mb-3.5",
+      "text-[13px] uppercase tracking-[0.14em] text-owncart-secondary mb-3.5",
     chip:
-      "text-[12.5px] text-owncart-forest bg-owncart-cream border border-owncart-line px-3 py-1.5 rounded-full",
+      "text-[12.5px] text-owncart-accent bg-owncart-surface-alt border border-owncart-border-active px-3.5 py-1.5 rounded-full shadow-xs",
     discount:
-      "text-xs text-owncart-forest-dark bg-owncart-mango px-2.5 py-0.5 rounded-md font-extrabold uppercase tracking-wider",
+      "text-xs text-white bg-owncart-secondary px-2.5 py-0.5 rounded-md font-extrabold uppercase tracking-wider shadow-sm",
     success:
-      "text-xs text-white bg-owncart-sage px-3 py-1 rounded-lg",
+      "text-xs text-white bg-owncart-primary px-3 py-1 rounded-lg shadow-sm",
   };
 
   return (

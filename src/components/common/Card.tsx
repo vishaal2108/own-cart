@@ -14,21 +14,21 @@ export const Card: React.FC<CardProps> = ({
   variant = "default",
   padding = "lg",
 }) => {
-  const baseStyles = "rounded-owncart transition-all duration-200 relative overflow-hidden";
+  const baseStyles = "rounded-owncart transition-all duration-300 relative overflow-hidden";
 
   const variants = {
     default:
-      "bg-owncart-paper border border-owncart-line shadow-sm",
+      "bg-owncart-surface border border-owncart-border shadow-sm hover:bg-owncart-surface-hover hover:border-owncart-border-active",
     highlight:
-      "bg-owncart-forest text-white shadow-md border border-owncart-forest",
+      "bg-brand-gradient text-white shadow-lg border border-owncart-secondary",
     glass:
-      "bg-owncart-paper border border-owncart-line shadow-sm hover:shadow-md",
+      "bg-white/80 backdrop-blur-md border border-owncart-border shadow-sm hover:shadow-md",
     interactive:
-      "bg-owncart-paper border border-owncart-line hover:border-owncart-forest/30 shadow-sm hover:shadow-md hover:-translate-y-1 cursor-pointer",
+      "bg-owncart-surface border border-owncart-border hover:bg-owncart-surface-hover hover:border-owncart-secondary shadow-sm hover:shadow-md hover:-translate-y-1 cursor-pointer",
     pricing:
-      "bg-white/[0.04] border border-white/12 text-white",
+      "bg-owncart-surface border border-owncart-border text-owncart-heading shadow-sm hover:border-owncart-border-active hover:shadow-md",
     "pricing-highlight":
-      "bg-owncart-forest border border-owncart-mango text-white shadow-[0_30px_60px_-20px_rgba(0,0,0,0.5)] lg:-translate-y-3 z-10",
+      "bg-[var(--surface-alt)] border-2 border-[var(--secondary)] text-[var(--heading)] shadow-[var(--shadow-lg)] lg:-translate-y-3 z-10",
   };
 
   const paddings = {

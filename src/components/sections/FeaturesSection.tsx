@@ -7,7 +7,7 @@ import { cn } from "../../utils/cn";
 
 export const FeaturesSection: React.FC = () => {
   const getFeatureIcon = (id: string, isBig: boolean | undefined) => {
-    const iconClass = cn("w-6 h-6", isBig ? "text-owncart-mango" : "text-owncart-forest");
+    const iconClass = cn("w-6 h-6", isBig ? "text-white" : "text-owncart-secondary");
     switch (id) {
       case "custom-link":
         return <Link2 className={iconClass} />;
@@ -25,20 +25,20 @@ export const FeaturesSection: React.FC = () => {
   };
 
   return (
-    <section id="features" className="py-24 md:py-[100px] relative overflow-hidden">
+    <section id="features" className="py-24 md:py-[100px] relative overflow-hidden bg-white">
       <div className="max-w-[1180px] mx-auto px-7">
         {/* Section Header */}
         <div className="text-center max-w-[720px] mx-auto mb-12 flex flex-col items-center">
           <Badge variant="eyebrow" center>
             What you get
           </Badge>
-          <h2 className="font-serif text-[28px] sm:text-[36px] md:text-[42px] font-semibold text-owncart-ink tracking-tight leading-[1.15] mb-3">
+          <h2 className="font-serif text-[28px] sm:text-[36px] md:text-[42px] font-semibold text-owncart-heading tracking-tight leading-[1.15] mb-3">
             Everything a shop needs.{" "}
-            <span className="text-owncart-clay">
+            <span className="text-transparent bg-clip-text bg-brand-gradient">
               Nothing it doesn&apos;t.
             </span>
           </h2>
-          <p className="text-[16px] sm:text-[18px] text-owncart-ink/75 m-0">
+          <p className="text-[16px] sm:text-[18px] text-owncart-text m-0">
             Designed for speed, simplicity, and conversion. No complex dashboards or developer menus.
           </p>
         </div>
@@ -62,18 +62,18 @@ export const FeaturesSection: React.FC = () => {
                 <div>
                   <div
                     className={cn(
-                      "w-12 h-12 rounded-2xl flex items-center justify-center mb-6 transition-transform group-hover:scale-105",
+                      "w-12 h-12 rounded-2xl flex items-center justify-center mb-6 transition-transform group-hover:scale-105 shadow-sm",
                       isBig
-                        ? "bg-white/10 border border-white/20"
-                        : "bg-owncart-cream border border-owncart-line/60"
+                        ? "bg-white/15 border border-white/25"
+                        : "bg-[var(--surface-alt)] border border-[var(--border-active)]"
                     )}
                   >
                     {getFeatureIcon(feature.id, isBig)}
                   </div>
                   <h3
                     className={cn(
-                      "font-serif text-[19px] font-semibold mb-2.5 transition-colors",
-                      isBig ? "text-white" : "text-owncart-ink group-hover:text-owncart-forest"
+                      "font-serif text-[20px] font-semibold mb-2.5 transition-colors",
+                      isBig ? "text-white" : "text-owncart-heading group-hover:text-owncart-secondary"
                     )}
                   >
                     {feature.title}
@@ -81,7 +81,7 @@ export const FeaturesSection: React.FC = () => {
                   <p
                     className={cn(
                       "text-[14.5px] leading-[1.55] m-0",
-                      isBig ? "text-white/75" : "text-owncart-ink/70"
+                      isBig ? "text-white/85" : "text-owncart-text"
                     )}
                   >
                     {feature.description}
@@ -90,14 +90,14 @@ export const FeaturesSection: React.FC = () => {
 
                 {/* Custom Link Mini Preview Box */}
                 {feature.miniUrl && (
-                  <div className="mt-[18px] p-2.5 px-3.5 rounded-[10px] bg-white/10 border border-dashed border-white/30 font-mono text-[13px] text-owncart-mango flex items-center justify-between">
+                  <div className="mt-[18px] p-2.5 px-3.5 rounded-[10px] bg-white/15 border border-dashed border-white/30 font-mono text-[13px] text-white flex items-center justify-between">
                     <span className="truncate">
                       {feature.miniUrl.base}
-                      <b className="font-bold underline decoration-owncart-mango">
+                      <b className="font-bold underline decoration-white">
                         {feature.miniUrl.bold}
                       </b>
                     </span>
-                    <span className="text-[11px] bg-owncart-mango/20 text-owncart-mango px-2 py-0.5 rounded font-sans font-bold shrink-0 ml-2">
+                    <span className="text-[11px] bg-white text-owncart-accent px-2 py-0.5 rounded font-sans font-bold shrink-0 ml-2 shadow-xs">
                       Live ✨
                     </span>
                   </div>
@@ -107,8 +107,8 @@ export const FeaturesSection: React.FC = () => {
                 {feature.chips && (
                   <div className="mt-4 flex flex-wrap gap-2 pt-2">
                     {feature.chips.map((chip) => (
-                      <span key={chip} className="inline-flex items-center gap-1 text-[12.5px] text-owncart-forest bg-owncart-cream border border-owncart-line px-3 py-[7px] rounded-full font-bold shadow-xs">
-                        <Check className="w-3.5 h-3.5 text-owncart-sage shrink-0" />
+                      <span key={chip} className="inline-flex items-center gap-1.5 text-[12.5px] text-owncart-heading bg-[var(--surface-alt)] border border-[var(--border-active)] px-3.5 py-[7px] rounded-full font-bold shadow-xs">
+                        <Check className="w-3.5 h-3.5 text-owncart-primary shrink-0" />
                         <span>{chip}</span>
                       </span>
                     ))}

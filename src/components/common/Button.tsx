@@ -21,18 +21,18 @@ export const Button: React.FC<ButtonProps> = ({
   ...props
 }) => {
   const baseStyles =
-    "inline-flex items-center justify-center font-bold rounded-full transition-all duration-200 active:scale-95 focus:outline-none focus:ring-2 focus:ring-owncart-forest/50 disabled:opacity-50 disabled:pointer-events-none";
+    "inline-flex items-center justify-center font-bold rounded-full transition-all duration-300 active:scale-95 focus:outline-none focus:ring-2 focus:ring-owncart-accent/50 disabled:opacity-50 disabled:pointer-events-none";
 
   const variants = {
     primary:
-      "bg-owncart-forest text-white hover:bg-owncart-forest-dark hover:-translate-y-0.5 shadow-lg shadow-owncart-forest/20 hover:shadow-xl hover:shadow-owncart-forest/30",
+      "bg-brand-gradient hover:bg-brand-gradient-hover text-white hover:-translate-y-0.5 shadow-glow hover:shadow-lg",
     secondary:
-      "bg-owncart-clay text-white hover:bg-owncart-clay/90 shadow-lg shadow-owncart-clay/20",
+      "bg-white text-owncart-secondary border-2 border-owncart-secondary hover:bg-[#FFF0F4] hover:-translate-y-0.5 shadow-sm",
     ghost:
-      "bg-transparent text-owncart-ink border border-owncart-line hover:border-owncart-forest hover:-translate-y-0.5",
+      "bg-white/70 hover:bg-white text-owncart-heading border-2 border-owncart-border hover:border-owncart-secondary hover:-translate-y-0.5 shadow-xs hover:shadow-md",
     outline:
-      "border-2 border-owncart-forest text-owncart-forest hover:bg-owncart-forest/10",
-    text: "text-owncart-forest hover:underline underline-offset-4 px-0",
+      "border-2 border-owncart-secondary text-owncart-secondary hover:bg-owncart-secondary/10",
+    text: "text-owncart-accent hover:underline underline-offset-4 px-0",
   };
 
   const sizes = {
